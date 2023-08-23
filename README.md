@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This is a printf project done by  Brighton Tongoona and David Ajayi
 
 0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life
@@ -31,3 +32,12 @@
 14. The flood of print has turned reading into a process of gulping rather than savoring
 
 15. *
+=======
+#This project is done by Simba and David Ajayi
+
+  ABOUT
+
+This project is about printf fucntion in more detail.
+The printf project also include all the projects we have completed using the _putchar
+fuction.
+>>>>>>> 600d46267d60da930242fd79b39360fd62fd2acd
