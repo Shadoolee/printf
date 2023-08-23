@@ -1,13 +1,24 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
+/**
+ * print_buffer - This_Prints_the_contents_of_the_buffer_if_it_exists.
+ * @buffer: This_will_prints_Array_of_chars.
+ * @buff_ind: The_Index_at_which_to_add_the_next_char_represents_the_length.
+ */
+void print_buffer(char buffer[], int *buff_ind)
+{
+	if (*buff_ind > 0)
+	{
+		write(1, &buffer[0], *buff_ind);
+		*buff_ind = 0;
+	}
+}
 
 /**
- * _printf - This_is_a_Printf_function.
- * @format: The_format.
- * Return: Always return Printed chars.
+ * _printf - This_is_Printf_function.
+ * @format: The_Format_string.
+ * Return: Always return Number of printed chars.
  */
-
 int _printf(const char *format, ...)
 {
 	int i, printed = 0, printed_chars = 0;
@@ -26,8 +37,9 @@ int _printf(const char *format, ...)
 		{
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
+			{
 				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[i], 1);*/
+			}
 			printed_chars++;
 		}
 		else
@@ -37,7 +49,7 @@ int _printf(const char *format, ...)
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
-			++i;
+			i++;
 			printed = handle_print(format, &i, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
@@ -46,23 +58,10 @@ int _printf(const char *format, ...)
 		}
 	}
 
+
 	print_buffer(buffer, &buff_ind);
 
 	va_end(list);
 
 	return (printed_chars);
-}
-
-/**
- * print_buffer - This_Prints_the_contents_of_the_buffer_if_it_exist
- * @buffer: Buffer_of_array_of_chars.
- * @buff_ind: The_Index_at_which_to_add_next_char_represents_the_length.
- */
-
-void print_buffer(char buffer[], int *buff_ind)
-{
-	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
-
-	*buff_ind = 0;
 }
